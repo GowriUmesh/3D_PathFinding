@@ -19,7 +19,8 @@ The objective is to find the shortest path from the start cell to the stop cell 
 ## Code Description
 The code simply follows the algorithm described below.It implements Breadth First Search algorithm to reach the goal,
 and then the path is bactracked to return a path as cell coordinates
-![image](https://user-images.githubusercontent.com/55944277/130051301-a626c8ff-69a0-4a3c-9a1d-ca419eeb6181.png)
+![image](https://user-images.githubusercontent.com/55944277/130051301-a626c8ff-69a0-4a3c-9a1d-ca419eeb6181.png)\
+
 The header also includes brief description of each functions to ease the understanding of the code.
 
 ### For compilation
