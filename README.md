@@ -18,8 +18,19 @@ The objective is to find the shortest path from the start cell to the stop cell 
 
 ## Code Description
 The code simply follows the algorithm described below.It implements Breadth First Search algorithm to reach the goal,
-and then the bath is bactracked to return a path as cell coordinates
+and then the path is bactracked to return a path as cell coordinates
 ![image](https://user-images.githubusercontent.com/55944277/130051301-a626c8ff-69a0-4a3c-9a1d-ca419eeb6181.png)
 The header also includes brief description of each functions to ease the understanding of the code.
 
-## Usage
+### For compilation
+* mkdir build
+* cd build
+* cmake ../
+* make
+
+### To Test the header
+The usage of the header can be done by including the header and calling the function from main funtion,
+this repository provides an example `main.cpp` file that finds the path of a hardcoded 3D maze of size (3x4x4) to test `pathFinder.h`.
+it is to note that Maze used is just an example however input maze can be scaled. `main.cpp` can be replaced with other file including test cases.
+
+
