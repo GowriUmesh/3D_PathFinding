@@ -1,8 +1,11 @@
 /**
  * Author:    Gowri Umesh <mailgowriumesh@gmail.com>
  * Created:   18.Aug.2021
- * Version:   0.1
- *
+ * License:   MIT
+ * Filename:  pathFinder.h
+ * Version:   0.2
+ * Edited:    16.Mar.2025
+ * 
  * Description:This header finds the shortest path between
  * a start cell and an end cell of a given 3D grid
  * The code uses Breadth First Search to find the goal.
@@ -28,7 +31,9 @@ using namespace std;
 
 typedef struct{
     int x, y,z,id,parent;
+    
 } Cell;
+
 
 Cell startCell,endCell,currentCell;
 vector<Cell> visitedCells;
@@ -39,13 +44,17 @@ bool reached = false;
 /**
  * reconstructPath - Reconstruct the Path
  * @visitedCells: vector of all the visited cells
- * @counter: total count of visited cells
  *
  * Description: This function reconstructs the path by
  * mapping each cell to its parent cell beginning with the end cell.
  */
-void reconstructPath(vector<Cell> visitedCells,int counter){
-
+void reconstructPath(vector<Cell>& visitedCells){
+    
+    if(visitedCells.empty()){
+        cout<<"Error! No visted cells to reconstruct the path!"<<endl;
+        return; 
+    }
+    
     vector<Cell> shortPath;
     for(int k=visitedCells.size()-1;k!=startCell.id;k=visitedCells[k].parent){
         shortPath.push_back(visitedCells[k]);
@@ -54,7 +63,6 @@ void reconstructPath(vector<Cell> visitedCells,int counter){
     for(int j=shortPath.size()-1;j>=0;j--){
         shortestPath.push_back({shortPath[j].x,shortPath[j].y,shortPath[j].z});
     }
-
 }
 
 /**
@@ -124,9 +132,10 @@ vector<vector<int>> findPath(vector<vector<vector<int>>> Maze,int start[3],int s
 
     int counter=0;
     vector<Cell> neighbours;
-    startCell.x = start[0],startCell.y=start[1],startCell.z=start[2];
-    endCell.x = stop[0],endCell.y=stop[1],endCell.z=stop[2];
-    startCell.id=counter;
+
+    startCell = {start[0], start[1], start[2], counter++,-1};
+    endCell = {stop[0], stop[1], stop[2], -1,-1};
+    
     waitingList.push_back(startCell);
     visitedCells.push_back(startCell);
 
@@ -135,11 +144,13 @@ vector<vector<int>> findPath(vector<vector<vector<int>>> Maze,int start[3],int s
         currentCell = waitingList.front();
         waitingList.erase(waitingList.begin());
         visitedCells.push_back(currentCell);
+
         if(currentCell.x == endCell.x && currentCell.y == endCell.y && currentCell.z == endCell.z){
             reached = true;
             cout<<"Path Found"<<endl;
-            reconstructPath(visitedCells,counter);
+            reconstructPath(visitedCells);
         }
+
         else{
             neighbours = findNeighbors(Maze,neighbours,currentCell);
             while(neighbours.size()>0){
@@ -154,8 +165,10 @@ vector<vector<int>> findPath(vector<vector<vector<int>>> Maze,int start[3],int s
             }
         }
     }
-    if(!reached)
+    if(!reached){
         cout<<"No Path Found between the start cell and stop cell"<<endl;
+        shortestPath.clear();
+    }
     return shortestPath;
 
 }
