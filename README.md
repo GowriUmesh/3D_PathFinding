@@ -35,4 +35,10 @@ The usage of the header can be done by including the header and calling the func
 this repository provides an example `main.cpp` file that finds the path of a hardcoded 3D maze of size (3x4x4) to test `pathFinder.h`.
 it is to note that Maze used is just an example however input maze can be scaled. `main.cpp` can be replaced with other file including test cases.
 
-
+## Changelog
+### Version 0.2 (16.Mar.2025)
+- Added unit test cases for `reconstructPath` to cover edge cases:
+    - with no visited cells (edge case).
+    - when visited cells contain valid path.
+    - when start and end are the same.   
+- Fixed issues in `reconstructPath` function

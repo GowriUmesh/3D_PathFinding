@@ -2,7 +2,12 @@
 #include "../pathFinder.h"  
 
 /*
-* Unit Tests for the pathFinder.h
+* Author:    Gowri Umesh <mailgowriumesh@gmail.com>
+* Created:   16.Mar.2025
+* License:   MIT
+* Filename:  pathFinder_tests.cpp
+* Version:   0.1
+
 * Test cases : to test reconstructPath() function
 * 1. Reconstruct path with no visited cells (edge case).
 * 2. Reconstruct path when visited cells contain valid path.
@@ -16,7 +21,7 @@
 * Add test cases : the main().
 */
 
-// Test case 1: Reconstruct path with no visited cells (edge case).
+// Test case 1: Reconstruct path with no visited cells.
 TEST(ReconstructPathTest, NoVisitedCells) {
     
     vector<Cell> visitedCells;
